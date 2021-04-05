@@ -255,6 +255,7 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ::\cong::≅
 ::\circ::⚬
 
+; TODO try using previous format for these (e.g. ::\X::Y) but send a backspace as well to prevent exstra space.
 ; subscripts and superscripts
 ; for more information about these unicode characters: https://en.wikipedia.org/wiki/Unicode_subscripts_and_superscripts
 ; in the following you need to type: ctrl+alt+x where x is the last character before the "::".
