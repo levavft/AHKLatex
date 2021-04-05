@@ -257,49 +257,50 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 
 ; subscripts and superscripts
 ; for more information about these unicode characters: https://en.wikipedia.org/wiki/Unicode_subscripts_and_superscripts
-^!0::Send {U+2080} ; this means, you need to click: ctrl+alt+0 to get the 0 subscript, i.e. X₀
-^!1::Send {U+2081}
-^!2::Send {U+2082}
-^!3::Send {U+2083}
-^!4::Send {U+2084}
-^!5::Send {U+2085}
-^!6::Send {U+2086}
-^!7::Send {U+2087}
-^!8::Send {U+2088}
-^!9::Send {U+2089}
-^!+::Send {U+208A}
-^!-::Send {U+208B}
-^!h::Send {U+2095}
-^!k::Send {U+2096}
-^!m::Send {U+2098}
-^!n::Send {U+2099}
-^!p::Send {U+209A}
-^!s::Send {U+209B}
-^!t::Send {U+209C}
+; in the following you need to type: ctrl+alt+x where x is the last character before the "::".
+^!0::Send {U+2080} ; X₀
+^!1::Send {U+2081} ; X₁
+^!2::Send {U+2082} ; X₂
+^!3::Send {U+2083} ; X₃
+^!4::Send {U+2084} ; X₄
+^!5::Send {U+2085} ; X₅
+^!6::Send {U+2086} ; X₆
+^!7::Send {U+2087} ; X₇
+^!8::Send {U+2088} ; X₈
+^!9::Send {U+2089} ; X₉
+^!+::Send {U+208A} ; X₊, this requires the shift key as well.
+^!-::Send {U+208B} ; X₋
+^!h::Send {U+2095} ; Xₕ
+^!k::Send {U+2096} ; Xₖ
+^!m::Send {U+2098} ; Xₘ
+^!n::Send {U+2099} ; Xₙ
+^!p::Send {U+209A} ; Xₚ
+^!s::Send {U+209B} ; Xₛ
+^!t::Send {U+209C} ; Xₜ
 
-^#0::Send {U+2070} ; this means, you need to click: ctrl+winkey+0 to get the 0 superscript, i.e. X⁰
-^#1::Send {U+00B9}
-^#2::Send {U+00B2}
-^#3::Send {U+00B3}
-^#4::Send {U+2074}
-^#5::Send {U+2075}
-^#6::Send {U+2076}
-^#7::Send {U+2077}
-^#8::Send {U+2078}
-^#9::Send {U+2079}
-^#+::Send {U+207A} ; this requires the shift key as well
-^#-::Send {U+207B}
-^#n::Send {U+207F}
-^#i::Send {U+2071}
-^#*::Send {U+20F0}
+; in the following you need to type: ctrl+winkey+x where x is the last character before the "::".
+^#0::Send {U+2070} ; X⁰
+^#1::Send {U+00B9} ; X¹
+^#2::Send {U+00B2} ; X²
+^#3::Send {U+00B3} ; X³
+^#4::Send {U+2074} ; X⁴
+^#5::Send {U+2075} ; X⁵
+^#6::Send {U+2076} ; X⁶
+^#7::Send {U+2077} ; X⁷
+^#8::Send {U+2078} ; X⁸
+^#9::Send {U+2079} ; X⁹
+^#+::Send {U+207A} ; X⁺, this requires the shift key as well.
+^#-::Send {U+207B} ; X⁻
+^#n::Send {U+207F} ; Xⁿ
+^#i::Send {U+2071} ; Xⁱ
+^#*::Send {U+20F0} ; X⃰, this requires the shift key as well.
 
 ; Other combining characters.
 ; To add more look at: https://en.wikipedia.org/wiki/Combining_character
-!#o::Send {U+0305} ; winkey+alt+o, overline, i.e. X̅
+; in the following you need to type: winkey+alt+x where x is the last character before the "::".
+!#o::Send {U+0305} ; overline, i.e. X̅
 !#n::Send {U+20E5} ; not, i.e. ⃥=
 !#h::Send {U+0302} ; hat, i.e. X̂
 !#d::Send {U+0307} ; dot, i.e. Ẋ
 
 #IfWinActive
-
-
