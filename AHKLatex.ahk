@@ -9,6 +9,7 @@
 GroupAdd, LatexTextConversionGroup, ahk_exe chrome.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe firefox.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe opera.exe
+GroupAdd, LatexTextConversionGroup, ahk_exe msedge.exe
 ; interpreters
 GroupAdd, LatexTextConversionGroup, ahk_exe pycharm64.exe
 ; communication apps
