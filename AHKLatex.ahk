@@ -16,16 +16,6 @@ GroupAdd, LatexTextConversionGroup, ahk_exe pycharm64.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe whatsapp.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 
-; TODO: create keystroke mode - e.g. instead of the shortcut being the letters in english, let it be the specific keys,
-; iregardless of the language setting.
-; relevant links for this:
-; https://autohotkey.com/board/topic/22316-how-to-map-keys-by-scancode/
-; https://www.win.tue.nl/~aeb/linux/kbd/scancodes-1.html
-; https://www.autohotkey.com/docs/commands/GetKey.htm
-
-; TODO: check if there's a way to create activation / deactivation sequences.
-
-
 #IfWinActive ahk_group LatexTextConversionGroup ; next hotkeys only trigger when the focused application is in the group.
 
 ; relevant links for improving this:
@@ -256,7 +246,6 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ::\cong::≅
 ::\circ::⚬
 
-; TODO try using previous format for these (e.g. ::\X::Y) but send a backspace as well to prevent exstra space.
 ; subscripts and superscripts
 ; for more information about these unicode characters: https://en.wikipedia.org/wiki/Unicode_subscripts_and_superscripts
 ; in the following you need to type: ctrl+alt+x where x is the last character before the "::".
