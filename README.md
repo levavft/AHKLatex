@@ -8,14 +8,17 @@ To be able to run AHKLatex.ahk, you need to install autohotkey v1.1
 link - https://autohotkey.com/download/
 Afterwards, just double click the script to run it.
 
+
 Stopping the script:
 The script should appear in your app tray (next to the volume, date, internet etc.). 
 Right clicking on the script will give you the option to suspend hotkeys / pause the script / exit the script.
+
 
 Running the script on startup:
 Find the script file, select it, and press Ctrl+C.
 Press Win+R to open the Run dialog, then enter shell:startup and click OK or Enter. This will open the Startup folder for the current user. To instead open the folder for all users, enter shell:common startup (however, in that case you must be an administrator to proceed).
 Right click inside the window, and click "Paste Shortcut". The shortcut to the script should now be in the Startup folder.
+
 
 Usage:
 Most commonly used lyx shortcuts work, as long as they exist in unicode & don't require combining characters (with a few exceptions).
@@ -28,12 +31,18 @@ Examples:
    
 If you tried to use a common lyx/ latex shortcut that didn't work, feel free to request it. I'll add it if it's possible.
 
+
 Meta shortcuts:
 There are a few shortcuts that change the behaviour of other shortcuts.
+
 F6 disables/ enables all other non-meta shortcuts. It defaults to the enabled state.
+
 F7 disables/ enables global_mode, i.e. instead of only supporting shortcuts in a few applications it supports those shortcuts everywhere. Use with caution (hence, defaults to disabled).
+
 F8 disables/ enables classic_mode. This simply adds more shortcuts, that may not be intuitive to lyx users.
+
 F9 print current meta-state.
+
 
 List of applications where this script works when global_mode is off:
 chrome, firefox, opera, microsoft edge, pycharm, whatsapp (the desktop version), discord.
