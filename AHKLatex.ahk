@@ -17,7 +17,7 @@ GroupAdd, LatexTextConversionGroup, ahk_exe whatsapp.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 
 #IfWinActive ahk_group LatexTextConversionGroup ; next hotkeys only trigger when the focused application is in the group.
-
+#Hotstring c ; All the below hostrings will be case sensetive by default.
 ; highschool math
 ::\le::≤
 ::\ll::≪
