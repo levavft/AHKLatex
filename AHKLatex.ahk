@@ -241,6 +241,7 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ::\cong::≅
 ::\circ::⚬
 
+; subscripts
 ; in the following you need to type: ctrl+alt+x where x is the last character before the "::".
 ^!0::Send {U+2080} ; X₀
 ^!1::Send {U+2081} ; X₁
@@ -262,6 +263,7 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ^!s::Send {U+209B} ; Xₛ
 ^!t::Send {U+209C} ; Xₜ
 
+; superscripts
 ; in the following you need to type: ctrl+winkey+x where x is the last character before the "::".
 ^#0::Send {U+2070} ; X⁰
 ^#1::Send {U+00B9} ; X¹
