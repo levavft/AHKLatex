@@ -1,6 +1,8 @@
 # AHKLatex
 An AHK script that converts common latex commands to their equivalent Unicode.
 
+This script is made with lyx users in mind. If you're a lyx user and encounter unexpected behaviour, please create an issue.
+
 Running the script:
 To be able to run AHKLatex.ahk, you need to install autohotkey v1.1
 link - https://autohotkey.com/download/
