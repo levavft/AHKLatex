@@ -18,14 +18,18 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
-^#F10:: enabled := !enabled ; ctrl+winkey+F10
+F6:: enabled := enabled ? false : true
 global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
-^#F11:: global_mode := !global_mode ; ctrl+winkey+F11
+F7:: global_mode := global_mode ? false : true
 classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
-^#F12:: classic_mode := !classic_mode
+F8:: classic_mode := classic_mode ? false : true
 
+; The following is useful in case you don't know the current state.
+; Due to a quirk in AHK, initializing to false doesn't actually do anything. So at the start you'll see empty variables.
+F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
 
-#IfWinActive ahk_group LatexTextConversionGroup ; next hotkeys only trigger when the focused application is in the group.
+; WinActive checks if the active window is in the group defined above.
+#If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
 #Hotstring c ; All the below hostrings will be case sensetive by default.
 ; highschool math
 ::\le::≤
@@ -297,4 +301,4 @@ classic_mode := false ; this mode lets you use the original shortcuts as well. T
 :?o:\hat::{U+0302} ; X̂
 :?o:\dot::{U+0307} ; Ẋ
 
-#IfWinActive
+#If ; end if
