@@ -6,6 +6,11 @@ This script is made with lyx users in mind. If you're a lyx user and encounter u
 Running the script:
 To be able to run AHKLatex.ahk, you need to install autohotkey v1.1
 link - https://autohotkey.com/download/
+Afterwards, just double click the script to run it.
+
+Stopping the script:
+The script should appear in your app tray (next to the volume, date, internet etc.). 
+Right clicking on the script will give you the option to suspend hotkeys / pause the script / exit the script.
 
 Running the script on startup:
 Find the script file, select it, and press Ctrl+C.
