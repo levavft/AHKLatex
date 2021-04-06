@@ -16,6 +16,15 @@ GroupAdd, LatexTextConversionGroup, ahk_exe pycharm64.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe whatsapp.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 
+; different script modes are defined here
+enabled := true ; this enables / disables all non-mode shortcuts.
+^#F10:: enabled := !enabled ; ctrl+winkey+F10
+global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
+^#F11:: global_mode := !global_mode ; ctrl+winkey+F11
+classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
+^#F12:: classic_mode := !classic_mode
+
+
 #IfWinActive ahk_group LatexTextConversionGroup ; next hotkeys only trigger when the focused application is in the group.
 #Hotstring c ; All the below hostrings will be case sensetive by default.
 ; highschool math
