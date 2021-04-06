@@ -31,228 +31,231 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
 ; WinActive checks if the active window is in the group defined above.
 #If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
 #Hotstring c ; All the below hostrings will be case sensetive by default.
+; ?o means the shortcuts will happen in the middle of the word, as long as you type a space afterwards.
+; The space will not appear in the text itself, it is just a distinguisher.
+
 ; highschool math
-::\le::≤
-::\ll::≪
-::\ge::≥
-::\gg::≫
-::\pm::±
-::\mp::∓
-::\sqrt::√
-::\3root::∛
-::\4root::∜
-::\sum::∑
-::\prod::∏
-::\coprod::⨿ ; replace with ∐ if you want.
-::\lfloor::⌊
-::\rfloor::⌋
-::\lceil::⌈
-::\rceil::⌉
-::\angle::∡
-::\angle2::∢
-::\cis::∠
-::\deg::°
-::\perp::⊥
-::\cdot::·
-::\ndiv::∤
-::\times::⨯
-::\infty::∞
-::\inf::∞
-::\Re::ℜ
-::\Im::ℑ
+:?o:\le::≤
+:?o:\ll::≪
+:?o:\ge::≥
+:?o:\gg::≫
+:?o:\pm::±
+:?o:\mp::∓
+:?o:\sqrt::√
+:?o:\3root::∛
+:?o:\4root::∜
+:?o:\sum::∑
+:?o:\prod::∏
+:?o:\coprod::⨿ ; replace with ∐ if you want.
+:?o:\lfloor::⌊
+:?o:\rfloor::⌋
+:?o:\lceil::⌈
+:?o:\rceil::⌉
+:?o:\angle::∡
+:?o:\angle2::∢
+:?o:\cis::∠
+:?o:\deg::°
+:?o:\perp::⊥
+:?o:\cdot::·
+:?o:\ndiv::∤
+:?o:\times::⨯
+:?o:\infty::∞
+:?o:\inf::∞
+:?o:\Re::ℜ
+:?o:\Im::ℑ
 
 ; fractions
-::\half::½
-::\12::½
-::\23::⅔
-::\14::¼
-::\16::⅙
-::\18::⅛
-::\110::⅒
+:?o:\half::½
+:?o:\12::½
+:?o:\23::⅔
+:?o:\14::¼
+:?o:\16::⅙
+:?o:\18::⅛
+:?o:\110::⅒
 
 ; shapes
-::\triangle::∆
-::\square::□
-::\blacksquare::∎
-::\qed::∎
+:?o:\triangle::∆
+:?o:\square::□
+:?o:\blacksquare::∎
+:?o:\qed::∎
 
 ; logic
-::\land::∧
-::\wedge::∧
-::\lor::∨
-::\vee::∨
-::\lnot::¬
-::\neq::≠
-::\iff::⟺
-::\LeftRightarrow::⟺
-::\all::∀
-::\forall::∀
-::\exists::∃
-::\nexists::∄
-::\to::⟶
-::\rightarrow::⟶
-::\To::⟹
-::\Rightarrow::⟹
-::\from::⟵
-::\leftarrow::⟵
-::\From::⟸
-::\Leftarrow::⟸
-::\hookrightarrow::↪
+:?o:\land::∧
+:?o:\wedge::∧
+:?o:\lor::∨
+:?o:\vee::∨
+:?o:\lnot::¬
+:?o:\neq::≠
+:?o:\iff::⟺
+:?o:\LeftRightarrow::⟺
+:?o:\all::∀
+:?o:\forall::∀
+:?o:\exists::∃
+:?o:\nexists::∄
+:?o:\to::⟶
+:?o:\rightarrow::⟶
+:?o:\To::⟹
+:?o:\Rightarrow::⟹
+:?o:\from::⟵
+:?o:\leftarrow::⟵
+:?o:\From::⟸
+:?o:\Leftarrow::⟸
+:?o:\hookrightarrow::↪
 
 ; set theory
-::\in::∈
-::\nin::∉
-::\notin::∉
-::\ni::∋
-::\notni::∌
-::\subset::⊂
-::\subseteq::⊆
-::\subsetneq::⊊
-::\superset::⊃
-::\supset::⊃
-::\supseteq::⊇
-::\superseteq::⊇
-::\supersetneq::⊋
-::\supsetneq::⊋
-::\cup::∪
-::\bigcup::⋃
-::\cap::∩
-::\bigcap::⋂
-::\emptyset::∅
+:?o:\in::∈
+:?o:\nin::∉
+:?o:\notin::∉
+:?o:\ni::∋
+:?o:\notni::∌
+:?o:\subset::⊂
+:?o:\subseteq::⊆
+:?o:\subsetneq::⊊
+:?o:\superset::⊃
+:?o:\supset::⊃
+:?o:\supseteq::⊇
+:?o:\superseteq::⊇
+:?o:\supersetneq::⊋
+:?o:\supsetneq::⊋
+:?o:\cup::∪
+:?o:\bigcup::⋃
+:?o:\cap::∩
+:?o:\bigcap::⋂
+:?o:\emptyset::∅
 
 ; cardinality
-::\aleph::ℵ
-::\beth::ℶ
-::\mfc::𝔠
+:?o:\aleph::ℵ
+:?o:\beth::ℶ
+:?o:\mfc::𝔠
 
 ; relations
-::\prec::≺
-::\preceq::≼
-::\precneq::⋨
-::\succ::≻
-::\succeq::≽
-::\succneq::⋩
-::\approx::≈
-::\propto::∝
+:?o:\prec::≺
+:?o:\preceq::≼
+:?o:\precneq::⋨
+:?o:\succ::≻
+:?o:\succeq::≽
+:?o:\succneq::⋩
+:?o:\approx::≈
+:?o:\propto::∝
 
 ; double stroke capital characters, i.e. mathbb.
-::\mbn::ℕ
-::\mbz::ℤ
-::\mbq::ℚ
-::\mbr::ℝ
-::\mbc::ℂ
-::\mbf::𝔽
-::\mbk::𝕂
-::\mbs::𝕊
-::\mba::𝔸
-::\mbh::ℍ
-::\nodd::ℕodd
-::\neven::ℕeven
+:?o:\mbn::ℕ
+:?o:\mbz::ℤ
+:?o:\mbq::ℚ
+:?o:\mbr::ℝ
+:?o:\mbc::ℂ
+:?o:\mbf::𝔽
+:?o:\mbk::𝕂
+:?o:\mbs::𝕊
+:?o:\mba::𝔸
+:?o:\mbh::ℍ
+:?o:\nodd::ℕodd
+:?o:\neven::ℕeven
 
 ; mathfrak
-::\mfn::𝔑
-::\mfj::𝔍
-::\mfr::ℜ
-::\Re::ℜ
-::\mfi::ℑ
-::\Im::ℑ
-::\mfc::𝔠
+:?o:\mfn::𝔑
+:?o:\mfj::𝔍
+:?o:\mfr::ℜ
+:?o:\Re::ℜ
+:?o:\mfi::ℑ
+:?o:\Im::ℑ
+:?o:\mfc::𝔠
 
 ; mathcal
-::\mcp::𝒫
-::\mco::𝒪
+:?o:\mcp::𝒫
+:?o:\mco::𝒪
 
 ; linear algebra
-::\langle::⟨
-::\rangle::⟩
-::\oplus::⨁ ;⊕
-::\otimes::⨂ ;⊗
+:?o:\langle::⟨
+:?o:\rangle::⟩
+:?o:\oplus::⨁ ;⊕
+:?o:\otimes::⨂ ;⊗
 
 ; group theory
-::\lhd::⊲
-::\rhd::⊳
-::\unlhd::⊴
-::\lhdeq::⊴
-::\unrhd::⊵
-::\rhdeq::⊵
-::\rtimes::⋊
+:?o:\lhd::⊲
+:?o:\rhd::⊳
+:?o:\unlhd::⊴
+:?o:\lhdeq::⊴
+:?o:\unrhd::⊵
+:?o:\rhdeq::⊵
+:?o:\rtimes::⋊
 
 ; number theory
-::\equiv::≡
+:?o:\equiv::≡
 
 ; calculus
-::\int::∫
-::\iint::∬
-::\iiint::∭
-::\lint::∮
-::\liint::∯
-::\liiint::∰
-::\partial::∂
-::\nabla::∇
-::\Delta::∆
+:?o:\int::∫
+:?o:\iint::∬
+:?o:\iiint::∭
+:?o:\lint::∮
+:?o:\liint::∯
+:?o:\liiint::∰
+:?o:\partial::∂
+:?o:\nabla::∇
+:?o:\Delta::∆
 
 ; greek
-::\alpha::𝛼
-::\beta::𝛽
-::\gamma::𝛾
-::\delta::𝛿
-::\epsilon::𝜀
-::\zeta::𝜁
-::\eta::𝜂
-::\theta::𝜃
-::\iota::𝜄
-::\kappa::𝜅
-::\lambda::𝜆
-::\mu::𝜇
-::\nu::𝜈
-::\xi::𝜉
-::\omicron::𝜊
-::\pi::𝜋
-::\rho::𝜌
-::\sigma::𝜎
-::\tau::𝜏
-::\upsilon::𝜐
-::\phi::𝜑
-::\varphi::𝜙
-::\chi::𝜒
-::\psi::𝜓
-::\omega::𝜔
+:?o:\alpha::𝛼
+:?o:\beta::𝛽
+:?o:\gamma::𝛾
+:?o:\delta::𝛿
+:?o:\epsilon::𝜀
+:?o:\zeta::𝜁
+:?o:\eta::𝜂
+:?o:\theta::𝜃
+:?o:\iota::𝜄
+:?o:\kappa::𝜅
+:?o:\lambda::𝜆
+:?o:\mu::𝜇
+:?o:\nu::𝜈
+:?o:\xi::𝜉
+:?o:\omicron::𝜊
+:?o:\pi::𝜋
+:?o:\rho::𝜌
+:?o:\sigma::𝜎
+:?o:\tau::𝜏
+:?o:\upsilon::𝜐
+:?o:\phi::𝜑
+:?o:\varphi::𝜙
+:?o:\chi::𝜒
+:?o:\psi::𝜓
+:?o:\omega::𝜔
 
-::\Alpha::𝛢
-::\Beta::𝛣
-::\Gamma::𝛤
-::\Delta::∆
-::\Epsilon::𝛦
-::\Zeta::𝛧
-::\Eta::𝛨
-::\Theta::𝛩
-::\Iota::𝛪
-::\Kappa::𝛫
-::\Lambda::𝛬
-::\Mu::𝛭
-::\Nu::𝛮
-::\Xi::𝛯
-::\Omicron::𝛰
-::\Pi::𝛱
-::\Rho::𝛲
-::\Sigma::𝛴
-::\Tau::𝛵
-::\Upsilon::𝛶
-::\Phi::𝛷
-::\Varphi::𝛷
-::\Chi::𝛸
-::\Psi::𝛹
-::\Omega::𝛺
+:?o:\Alpha::𝛢
+:?o:\Beta::𝛣
+:?o:\Gamma::𝛤
+:?o:\Delta::∆
+:?o:\Epsilon::𝛦
+:?o:\Zeta::𝛧
+:?o:\Eta::𝛨
+:?o:\Theta::𝛩
+:?o:\Iota::𝛪
+:?o:\Kappa::𝛫
+:?o:\Lambda::𝛬
+:?o:\Mu::𝛭
+:?o:\Nu::𝛮
+:?o:\Xi::𝛯
+:?o:\Omicron::𝛰
+:?o:\Pi::𝛱
+:?o:\Rho::𝛲
+:?o:\Sigma::𝛴
+:?o:\Tau::𝛵
+:?o:\Upsilon::𝛶
+:?o:\Phi::𝛷
+:?o:\Varphi::𝛷
+:?o:\Chi::𝛸
+:?o:\Psi::𝛹
+:?o:\Omega::𝛺
 
 ; functions and morphisms
-::\mapsto::↦
-::\onto::↠
-::\epimorph::↠
-::\into::↣ ; some use ↪
-::\monomorph::↣
-::\isomorph::⥲
-::\cong::≅
-::\circ::⚬
+:?o:\mapsto::↦
+:?o:\onto::↠
+:?o:\epimorph::↠
+:?o:\into::↣ ; some use ↪
+:?o:\monomorph::↣
+:?o:\isomorph::⥲
+:?o:\cong::≅
+:?o:\circ::⚬
 
 ; "?*" means the replacement will happen even in the middle of the word.
 ; subscripts.
@@ -277,6 +280,7 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
 :?*:_t::{U+209C} ; Xₜ
 
 ; superscripts.
+:?*:^-1::{U+207B}{U+00B9} ; X⁻¹
 :?*:^0::{U+2070} ; X⁰
 :?*:^1::{U+00B9} ; X¹
 :?*:^2::{U+00B2} ; X²
@@ -288,7 +292,7 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
 :?*:^8::{U+2078} ; X⁸
 :?*:^9::{U+2079} ; X⁹
 :?*:^+::{U+207A} ; X⁺, this requires the shift key as well.
-:?*:^-::{U+207B} ; X⁻
+:?o:^-::{U+207B} ; X⁻ ; this used ?o mode to allow X⁻¹.
 :?*:^n::{U+207F} ; Xⁿ
 :?*:^i::{U+2071} ; Xⁱ
 :?*:^*::{U+20F0} ; X⃰, this requires the shift key as well.
