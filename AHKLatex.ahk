@@ -241,51 +241,98 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ::\cong::≅
 ::\circ::⚬
 
-; subscripts
-; in the following you need to type: ctrl+alt+x where x is the last character before the "::".
-^!0::Send {U+2080} ; X₀
-^!1::Send {U+2081} ; X₁
-^!2::Send {U+2082} ; X₂
-^!3::Send {U+2083} ; X₃
-^!4::Send {U+2084} ; X₄
-^!5::Send {U+2085} ; X₅
-^!6::Send {U+2086} ; X₆
-^!7::Send {U+2087} ; X₇
-^!8::Send {U+2088} ; X₈
-^!9::Send {U+2089} ; X₉
-^!+::Send {U+208A} ; X₊, this requires the shift key as well.
-^!-::Send {U+208B} ; X₋
-^!h::Send {U+2095} ; Xₕ
-^!k::Send {U+2096} ; Xₖ
-^!m::Send {U+2098} ; Xₘ
-^!n::Send {U+2099} ; Xₙ
-^!p::Send {U+209A} ; Xₚ
-^!s::Send {U+209B} ; Xₛ
-^!t::Send {U+209C} ; Xₜ
+; "?*" means the replacement will happen even in the middle of the word.
+; subscripts.
+:?*:_0::{U+2080} ; X₀
+:?*:_1::{U+2081} ; X₁
+:?*:_2::{U+2082} ; X₂
+:?*:_3::{U+2083} ; X₃
+:?*:_4::{U+2084} ; X₄
+:?*:_5::{U+2085} ; X₅
+:?*:_6::{U+2086} ; X₆
+:?*:_7::{U+2087} ; X₇
+:?*:_8::{U+2088} ; X₈
+:?*:_9::{U+2089} ; X₉
+:?*:_+::{U+208A} ; X₊, this requires the shift key as well.
+:?*:_-::{U+208B} ; X₋
+:?*:_h::{U+2095} ; Xₕ
+:?*:_k::{U+2096} ; Xₖ
+:?*:_m::{U+2098} ; Xₘ
+:?*:_n::{U+2099} ; Xₙ
+:?*:_p::{U+209A} ; Xₚ
+:?*:_s::{U+209B} ; Xₛ
+:?*:_t::{U+209C} ; Xₜ
 
-; superscripts
-; in the following you need to type: ctrl+winkey+x where x is the last character before the "::".
-^#0::Send {U+2070} ; X⁰
-^#1::Send {U+00B9} ; X¹
-^#2::Send {U+00B2} ; X²
-^#3::Send {U+00B3} ; X³
-^#4::Send {U+2074} ; X⁴
-^#5::Send {U+2075} ; X⁵
-^#6::Send {U+2076} ; X⁶
-^#7::Send {U+2077} ; X⁷
-^#8::Send {U+2078} ; X⁸
-^#9::Send {U+2079} ; X⁹
-^#+::Send {U+207A} ; X⁺, this requires the shift key as well.
-^#-::Send {U+207B} ; X⁻
-^#n::Send {U+207F} ; Xⁿ
-^#i::Send {U+2071} ; Xⁱ
-^#*::Send {U+20F0} ; X⃰, this requires the shift key as well.
+; superscripts.
+:?*:^0::{U+2070} ; X⁰
+:?*:^1::{U+00B9} ; X¹
+:?*:^2::{U+00B2} ; X²
+:?*:^3::{U+00B3} ; X³
+:?*:^4::{U+2074} ; X⁴
+:?*:^5::{U+2075} ; X⁵
+:?*:^6::{U+2076} ; X⁶
+:?*:^7::{U+2077} ; X⁷
+:?*:^8::{U+2078} ; X⁸
+:?*:^9::{U+2079} ; X⁹
+:?*:^+::{U+207A} ; X⁺, this requires the shift key as well.
+:?*:^-::{U+207B} ; X⁻
+:?*:^n::{U+207F} ; Xⁿ
+:?*:^i::{U+2071} ; Xⁱ
+:?*:^*::{U+20F0} ; X⃰, this requires the shift key as well.
 
+; ?o means the shortcuts will happen in the middle of the word, as long as you type a space afterwards.
+; The space will not appear in the text itself, it is just a distinguisher.
 ; Other combining characters.
-; in the following you need to type: winkey+alt+x where x is the last character before the "::".
-!#o::Send {U+0305} ; overline, i.e. X̅
-!#n::Send {U+20E5} ; not, i.e. ⃥=
-!#h::Send {U+0302} ; hat, i.e. X̂
-!#d::Send {U+0307} ; dot, i.e. Ẋ
+:?o:\overline::{U+0305} ; X̅
+:?o:\not::{U+20E5} ; ⃥=, may not work in many applications.
+:?o:\hat::{U+0302} ; X̂
+:?o:\dot::{U+0307} ; Ẋ
+
+;; subscripts 2nd method.
+;; in the following you need to type: ctrl+alt+x where x is the last character before the "::".
+;^!0::Send {U+2080} ; X₀
+;^!1::Send {U+2081} ; X₁
+;^!2::Send {U+2082} ; X₂
+;^!3::Send {U+2083} ; X₃
+;^!4::Send {U+2084} ; X₄
+;^!5::Send {U+2085} ; X₅
+;^!6::Send {U+2086} ; X₆
+;^!7::Send {U+2087} ; X₇
+;^!8::Send {U+2088} ; X₈
+;^!9::Send {U+2089} ; X₉
+;^!+::Send {U+208A} ; X₊, this requires the shift key as well.
+;^!-::Send {U+208B} ; X₋
+;^!h::Send {U+2095} ; Xₕ
+;^!k::Send {U+2096} ; Xₖ
+;^!m::Send {U+2098} ; Xₘ
+;^!n::Send {U+2099} ; Xₙ
+;^!p::Send {U+209A} ; Xₚ
+;^!s::Send {U+209B} ; Xₛ
+;^!t::Send {U+209C} ; Xₜ
+;
+;; superscripts 2nd method.
+;; in the following you need to type: ctrl+winkey+x where x is the last character before the "::".
+;^#0::Send {U+2070} ; X⁰
+;^#1::Send {U+00B9} ; X¹
+;^#2::Send {U+00B2} ; X²
+;^#3::Send {U+00B3} ; X³
+;^#4::Send {U+2074} ; X⁴
+;^#5::Send {U+2075} ; X⁵
+;^#6::Send {U+2076} ; X⁶
+;^#7::Send {U+2077} ; X⁷
+;^#8::Send {U+2078} ; X⁸
+;^#9::Send {U+2079} ; X⁹
+;^#+::Send {U+207A} ; X⁺, this requires the shift key as well.
+;^#-::Send {U+207B} ; X⁻
+;^#n::Send {U+207F} ; Xⁿ
+;^#i::Send {U+2071} ; Xⁱ
+;^#*::Send {U+20F0} ; X⃰, this requires the shift key as well.
+;
+;; Other combining characters. 2nd method.
+;; in the following you need to type: winkey+alt+x where x is the last character before the "::".
+;!#o::Send {U+0305} ; overline, i.e. X̅
+;!#n::Send {U+20E5} ; not, i.e. ⃥=
+;!#h::Send {U+0302} ; hat, i.e. X̂
+;!#d::Send {U+0307} ; dot, i.e. Ẋ
 
 #IfWinActive
