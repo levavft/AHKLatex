@@ -18,11 +18,6 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 
 #IfWinActive ahk_group LatexTextConversionGroup ; next hotkeys only trigger when the focused application is in the group.
 
-; relevant links for improving this:
-; http://elyxer.nongnu.org/lyx/Math.html
-; https://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode
-; https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject
-
 ; highschool math
 ::\le::≤
 ::\ll::≪
@@ -246,8 +241,6 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ::\cong::≅
 ::\circ::⚬
 
-; subscripts and superscripts
-; for more information about these unicode characters: https://en.wikipedia.org/wiki/Unicode_subscripts_and_superscripts
 ; in the following you need to type: ctrl+alt+x where x is the last character before the "::".
 ^!0::Send {U+2080} ; X₀
 ^!1::Send {U+2081} ; X₁
@@ -287,7 +280,6 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ^#*::Send {U+20F0} ; X⃰, this requires the shift key as well.
 
 ; Other combining characters.
-; To add more look at: https://en.wikipedia.org/wiki/Combining_character
 ; in the following you need to type: winkey+alt+x where x is the last character before the "::".
 !#o::Send {U+0305} ; overline, i.e. X̅
 !#n::Send {U+20E5} ; not, i.e. ⃥=
