@@ -1,4 +1,4 @@
-﻿; It is recommended to edit this file with UltraEdit/pycharm. Other editors might not support some of the unicode here.
+﻿; It is recommended to edit this file with Pycharm/AHK's native editor. Other editors might not support some of the unicode here.
 ; To be able to run this file, you need to install autohotkey v1.1
 ; https://autohotkey.com/download/
 #NOENV  ; Generaly recommended for AHK scripts. See more here: https://www.autohotkey.com/docs/commands/_NoEnv.htm

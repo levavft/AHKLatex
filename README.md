@@ -18,7 +18,7 @@ Press Win+R to open the Run dialog, then enter shell:startup and click OK or Ent
 Right click inside the window, and click "Paste Shortcut". The shortcut to the script should now be in the Startup folder.
 
 Editing the script:
-It is recommended to edit this file with UltraEdit/pycharm. Other editors might not support some of the unicode here, and have not been tested.
+It is recommended to edit this file with Pycharm/AHK's native editor. Other editors might not support some of the unicode here, and have not been tested.
 
 For more mathematical symbols that you might want to add visit the following:
 http://elyxer.nongnu.org/lyx/Math.html
