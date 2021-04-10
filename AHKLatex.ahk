@@ -5,6 +5,11 @@
 #SingleInstance force  ; Whenever you run this script again, replaces the previous instance without asking first.
 
 ; to add the program "X" look up its "process name" and add in the same format.
+; text editors
+;SetTitleMatchMode, 2 ; Needed for detecting windows by Title (e.g. OneNote is used for OneNote For Windows 10)
+;GroupAdd, LatexTextConversionGroup, OneNote
+GroupAdd, LatexTextConversionGroup, ahk_exe winword.exe
+
 ; web browsers
 GroupAdd, LatexTextConversionGroup, ahk_exe chrome.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe firefox.exe
@@ -18,6 +23,8 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
+;classic_mode := true
+
 F6:: enabled := enabled ? false : true
 global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 F7:: global_mode := global_mode ? false : true
@@ -309,24 +316,13 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
 ::\-::−
 ::\ss::⊆
 ::\nss::⊈
-::\ne::≠
 ::\nl::≮
-::\cup::∪
 ::\u::∪
-::\cap::⋂
-::\to::→
-::\tto::⇒
-::\from::←
 ::\a::∀
 ::\e::∃
 ::\nex::∄
 ::\so::|
 ::\es::∅
-::\iff::↔
-::\ph::ϕ
-::\pi::π
-::\psi::ψ
-::\chi::χ
 ::\ep::ε
 ::\om::Ω
 ::\n::ℕ
@@ -341,9 +337,6 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
 ::\sig::∑
 ::\tr::∆
 ::\an::∡
-::\langle::〈
-::\rangle::〉
-::\cis::∠
 ::\ang::∡
 ::\ang2::∢
 ::\t::⨯
@@ -352,6 +345,3 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
 ::\f::𝑓
 ::\gf::𝑔
 ::\x::𝑥
-::_n+::ₙ₊₁
-::^-1::⁻¹
-::^-2::⁻²
