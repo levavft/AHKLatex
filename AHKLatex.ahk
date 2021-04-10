@@ -16,6 +16,8 @@ GroupAdd, LatexTextConversionGroup, ahk_exe pycharm64.exe
 ; communication apps
 GroupAdd, LatexTextConversionGroup, ahk_exe whatsapp.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
+; text editors
+GroupAdd, LatexTextConversionGroup, ahk_exe winword.exe
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
@@ -309,24 +311,13 @@ if (enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
         ::\-::−
         ::\ss::⊆
         ::\nss::⊈
-        ::\ne::≠
         ::\nl::≮
-        ::\cup::∪
         ::\u::∪
-        ::\cap::⋂
-        ::\to::→
-        ::\tto::⇒
-        ::\from::←
         ::\a::∀
         ::\e::∃
         ::\nex::∄
         ::\so::|
         ::\es::∅
-        ::\iff::↔
-        ::\ph::ϕ
-        ::\pi::π
-        ::\psi::ψ
-        ::\chi::χ
         ::\ep::ε
         ::\om::Ω
         ::\n::ℕ
@@ -341,9 +332,6 @@ if (enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
         ::\sig::∑
         ::\tr::∆
         ::\an::∡
-        ::\langle::〈
-        ::\rangle::〉
-        ::\cis::∠
         ::\ang::∡
         ::\ang2::∢
         ::\t::⨯
@@ -352,8 +340,5 @@ if (enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
         ::\f::𝑓
         ::\gf::𝑔
         ::\x::𝑥
-        ::_n+::ₙ₊₁
-        ::^-1::⁻¹
-        ::^-2::⁻²
     }
 }
