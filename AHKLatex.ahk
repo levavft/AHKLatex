@@ -4,6 +4,9 @@
 
 ; directives should be at the start of the code to prevent unwanted behaviour.
 #NOENV  ; Generaly recommended for AHK scripts. See more here: https://www.autohotkey.com/docs/commands/_NoEnv.htm
+; #Warn  ; Enable warnings to assist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance force  ; Whenever you run this script again, replaces the previous instance without asking first.
 #Hotstring c ; All hostrings will be case sensetive by default.
 
