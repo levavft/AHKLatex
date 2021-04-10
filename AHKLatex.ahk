@@ -1,9 +1,10 @@
 ﻿; It is recommended to edit this file with Pycharm/AHK's native editor. Other editors might not support some of the unicode here.
 ; To be able to run this file, you need to install autohotkey v1.1
 ; https://autohotkey.com/download/
+; directives should be at the start of the code to prevent unwanted behaviour.
 #NOENV  ; Generaly recommended for AHK scripts. See more here: https://www.autohotkey.com/docs/commands/_NoEnv.htm
 #SingleInstance force  ; Whenever you run this script again, replaces the previous instance without asking first.
-
+#Hotstring c ; All hostrings will be case sensetive by default.
 ; to add the program "X" look up its "process name" and add in the same format.
 ; web browsers
 GroupAdd, LatexTextConversionGroup, ahk_exe chrome.exe
