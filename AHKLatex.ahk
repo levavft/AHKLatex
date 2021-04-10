@@ -15,6 +15,8 @@ GroupAdd, LatexTextConversionGroup, ahk_exe pycharm64.exe
 ; communication apps
 GroupAdd, LatexTextConversionGroup, ahk_exe whatsapp.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
+; text editors
+GroupAdd, LatexTextConversionGroup, ahk_exe winword.exe
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
