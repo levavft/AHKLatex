@@ -9,6 +9,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance force  ; Whenever you run this script again, replaces the previous instance without asking first.
 #Hotstring c ; All hostrings will be case sensetive by default.
+SetTitleMatchMode, 2
 
 ; to add the program "X" look up its "process name" and add in the same format.
 ; web browsers
@@ -23,13 +24,15 @@ GroupAdd, LatexTextConversionGroup, ahk_exe whatsapp.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ; text editors
 GroupAdd, LatexTextConversionGroup, ahk_exe winword.exe
+GroupAdd, LatexTextConversionGroup, ahk_exe POWERPNT.EXE
+GroupAdd, LatexTextConversionGroup, OneNote
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
-F6:: enabled := enabled ? false : true
-global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
-F7:: global_mode := global_mode ? false : true
 classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
+global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
+F6:: enabled := enabled ? false : true
+F7:: global_mode := global_mode ?  : true
 F8:: classic_mode := classic_mode ? false : true
 
 ; The following is useful in case you don't know the current state.
@@ -37,7 +40,7 @@ F8:: classic_mode := classic_mode ? false : true
 F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
 
 ; WinActive checks if the active window is in the group defined above.
-if (enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)) {
+#If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
     ; ?o means the shortcuts will happen in the middle of the word, as long as you type a space afterwards.
     ; The space will not appear in the text itself, it is just a distinguisher.
 
@@ -311,39 +314,54 @@ if (enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
     :?o:\not::{U+20E5} ; ⃥=, may not work in many applications.
     :?o:\hat::{U+0302} ; X̂
     :?o:\dot::{U+0307} ; Ẋ
+#If
 
-    if (classic_mode) {
-        ::\-::−
-        ::\ss::⊆
-        ::\nss::⊈
-        ::\nl::≮
-        ::\u::∪
-        ::\a::∀
-        ::\e::∃
-        ::\nex::∄
-        ::\so::|
-        ::\es::∅
-        ::\ep::ε
-        ::\om::Ω
-        ::\n::ℕ
-        ::\rr::ℝ
-        ::\r::𝓡
-        ::\q::ℚ
-        ::\z::ℤ
-        ::\s::𝕊
-        ::\ah::ℵ₀
-        ::\p::𝒫
-        ::\eq::≡
-        ::\sig::∑
-        ::\tr::∆
-        ::\an::∡
-        ::\ang::∡
-        ::\ang2::∢
-        ::\t::⨯
-        ::\black::∎
-        ::\bl::∎
-        ::\f::𝑓
-        ::\gf::𝑔
-        ::\x::𝑥
-    }
+#If enabled and classic_mode and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
+    ::\-::−
+    :?o:\ss::⊆
+    ::\nss::⊈
+    ::\nl::≮
+    ::\u::∪
+    ::\a::∀
+    ::\e::∃
+    ::\nex::∄
+    ::\so::|
+    ::\es::∅
+    ::\ep::ε
+    ::\om::Ω
+    ::\n::ℕ
+    ::\rr::ℝ
+    ::\r::𝓡
+    ::\q::ℚ
+    ::\z::ℤ
+    ::\s::𝕊
+    ::\ah::ℵ₀
+    ::\p::𝒫
+    ::\eq::≡
+    ::\sig::∑
+    :?o:\tr::∆
+    ::\an::∡
+    ::\ang2::∡
+    :?o:\ang::∢
+    :?o:\t::⨯
+    ::\black::∎
+    :?o:\bl::∎
+    :?o:\f::𝑓
+    ::\gf::𝑔
+    ::\x::𝑥
+
+#If
+
+SetDefaultKeyboard(LocaleID){
+	Global
+	SPI_SETDEFAULTINPUTLANG := 0x005A
+	SPIF_SENDWININICHANGE := 2
+	Lan := DllCall("LoadKeyboardLayout", "Str", Format("{:08x}", LocaleID), "Int", 0)
+	VarSetCapacity(Lan%LocaleID%, 4, 0)
+	NumPut(LocaleID, Lan%LocaleID%)
+	DllCall("SystemParametersInfo", "UInt", SPI_SETDEFAULTINPUTLANG, "UInt", 0, "UPtr", &Lan%LocaleID%, "UInt", SPIF_SENDWININICHANGE)
+	WinGet, windows, List
+	Loop %windows% {
+		PostMessage 0x50, 0, %Lan%, , % "ahk_id " windows%A_Index%
+	}
 }
