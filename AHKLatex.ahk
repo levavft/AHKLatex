@@ -27,10 +27,15 @@ GroupAdd, LatexTextConversionGroup, ahk_exe winword.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe POWERPNT.EXE
 GroupAdd, LatexTextConversionGroup, OneNote
 
+GroupAdd, OfficeGroup, ahk_exe ahk_exe WINWORD.EXE
+GroupAdd, OfficeGroup, ahk_exe POWERPNT.EXE
+GroupAdd, OfficeGroup, OneNote
+
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
 classic_mode := true ; this mode lets you use the original shortcuts as well. They take priority if they clash.
-global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
+global_mode := false
+ ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 F6:: enabled := enabled ? false : true
 F7:: global_mode := global_mode ?  : true
 F8:: classic_mode := classic_mode ? false : true
@@ -314,6 +319,26 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
     :?o:\not::{U+20E5} ; ⃥=, may not work in many applications.
     :?o:\hat::{U+0302} ; X̂
     :?o:\dot::{U+0307} ; Ẋ
+
+    ;enter math mode. match trigger sequence with Lyx math mode trigger
+    ^m::
+    {
+      SetDefaultKeyboard(0x0409)
+      ifWinActive ahk_group OfficeGroup
+      { ;msgbox, in office
+        SendInput != ;enter math mode (in office and oneone) . match trigger sequence with Lyx math mode triggering
+        return
+      }
+      else if !WinActive("Lyx")
+      { ;msgbox, global mode NOT lyx.
+        Send ^{enter}
+        return
+      }
+      else ;this is for lyx (to avoid interference in case user is in global mode).
+      { ;msgbox, Lyx (In Global mode)
+        SendInput ^m
+      }
+    }
 #If
 
 #If enabled and classic_mode and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
@@ -352,14 +377,9 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
     :?o:\ש::
       {
         SetDefaultKeyboard(0x0409)
-        Send ^{enter}
+        Send ^{enter}a
+        Send {lctrl down}{lshift down}{lctrl up}{lshift up}
         return
-      }
-    ^m::
-      {
-      ;enter math mode. match trigger sequence with Lyx math mode trigger
-        SendInput != ;enter math mode (in office and oneone) . match trigger sequence with Lyx math mode triggering
-        SetDefaultKeyboard(0x0409) ; set english in math mode.
       }
 #If
 
