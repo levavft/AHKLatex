@@ -29,7 +29,7 @@ GroupAdd, LatexTextConversionGroup, OneNote
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
-classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
+classic_mode := true ; this mode lets you use the original shortcuts as well. They take priority if they clash.
 global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 F6:: enabled := enabled ? false : true
 F7:: global_mode := global_mode ?  : true
@@ -349,7 +349,18 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
     :?o:\f::𝑓
     ::\gf::𝑔
     ::\x::𝑥
-
+    :?o:\ש::
+      {
+        SetDefaultKeyboard(0x0409)
+        Send ^{enter}
+        return
+      }
+    ^m::
+      {
+      ;enter math mode. match trigger sequence with Lyx math mode trigger
+        SendInput != ;enter math mode (in office and oneone) . match trigger sequence with Lyx math mode triggering
+        SetDefaultKeyboard(0x0409) ; set english in math mode.
+      }
 #If
 
 SetDefaultKeyboard(LocaleID){
