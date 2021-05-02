@@ -332,6 +332,9 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
       else if !WinActive("Lyx")
       { ;msgbox, global mode NOT lyx.
         Send ^{enter}
+        Send a ; I know this looks weird, but LtR->RtL works on a text that exists, otherwise it will just delete the empty space.
+        Send {lctrl down}{lshift down}{lctrl up}{lshift up}
+        Send {Backspace}
         return
       }
       else ;this is for lyx (to avoid interference in case user is in global mode).
