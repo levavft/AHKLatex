@@ -26,7 +26,7 @@ GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe winword.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe POWERPNT.EXE
 GroupAdd, LatexTextConversionGroup, OneNote
-
+; microsoft office
 GroupAdd, OfficeGroup, ahk_exe ahk_exe WINWORD.EXE
 GroupAdd, OfficeGroup, ahk_exe POWERPNT.EXE
 GroupAdd, OfficeGroup, OneNote
@@ -34,8 +34,11 @@ GroupAdd, OfficeGroup, OneNote
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
 classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
-global_mode := false
- ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
+global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
+
+languages:=GetAllKeyboards()
+english:="0x409"
+
 F6:: enabled := enabled ? false : true
 F7:: global_mode := global_mode ?  : true
 F8:: classic_mode := classic_mode ? false : true
