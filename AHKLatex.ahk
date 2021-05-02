@@ -33,7 +33,7 @@ GroupAdd, OfficeGroup, OneNote
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
-classic_mode := true ; this mode lets you use the original shortcuts as well. They take priority if they clash.
+classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
 global_mode := false
  ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 F6:: enabled := enabled ? false : true
