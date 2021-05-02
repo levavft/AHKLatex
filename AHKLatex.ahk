@@ -46,6 +46,30 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
 
 ; WinActive checks if the active window is in the group defined above.
 #If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
+    ;enter math mode. match trigger sequence with Lyx math mode trigger
+    ^m::
+    {
+      SetDefaultKeyboard(0x0409)
+      ifWinActive ahk_group OfficeGroup
+      { ;msgbox, in office
+        SendInput != ;enter math mode (in office and oneone) . match trigger sequence with Lyx math mode triggering
+        return
+      }
+      else if !WinActive("Lyx")
+      { ;msgbox, global mode NOT lyx.
+        Send ^{enter}
+        Send a ; I know this looks weird, but LtR->RtL works on a text that exists, otherwise it will just delete the empty space.
+        Send {lctrl down}{lshift down}{lctrl up}{lshift up}
+        Send {Backspace}
+        return
+      }
+      else ;this is for lyx (to avoid interference in case user is in global mode).
+      { ;msgbox, Lyx (In Global mode)
+        SendInput ^m
+      }
+    }
+
+    ; hotstrings:
     ; ?o means the shortcuts will happen in the middle of the word, as long as you type a space afterwards.
     ; The space will not appear in the text itself, it is just a distinguisher.
 
@@ -319,29 +343,6 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
     :?o:\not::{U+20E5} ; ⃥=, may not work in many applications.
     :?o:\hat::{U+0302} ; X̂
     :?o:\dot::{U+0307} ; Ẋ
-
-    ;enter math mode. match trigger sequence with Lyx math mode trigger
-    ^m::
-    {
-      SetDefaultKeyboard(0x0409)
-      ifWinActive ahk_group OfficeGroup
-      { ;msgbox, in office
-        SendInput != ;enter math mode (in office and oneone) . match trigger sequence with Lyx math mode triggering
-        return
-      }
-      else if !WinActive("Lyx")
-      { ;msgbox, global mode NOT lyx.
-        Send ^{enter}
-        Send a ; I know this looks weird, but LtR->RtL works on a text that exists, otherwise it will just delete the empty space.
-        Send {lctrl down}{lshift down}{lctrl up}{lshift up}
-        Send {Backspace}
-        return
-      }
-      else ;this is for lyx (to avoid interference in case user is in global mode).
-      { ;msgbox, Lyx (In Global mode)
-        SendInput ^m
-      }
-    }
 #If
 
 #If enabled and classic_mode and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
