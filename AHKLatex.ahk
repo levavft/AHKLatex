@@ -36,8 +36,10 @@ enabled := true ; this enables / disables all non-mode shortcuts.
 classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
 global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 
-languages:=GetAllKeyboards()
-english:="0x409"
+; variables that are used for ctrl+m are defined here
+languages := GetAllKeyboards()
+english := 0x409
+previous_language := "None"
 
 F6:: enabled := enabled ? false : true
 F7:: global_mode := global_mode ?  : true
@@ -46,29 +48,65 @@ F8:: classic_mode := classic_mode ? false : true
 ; The following is useful in case you don't know the current state.
 ; Due to a quirk in AHK, initializing to false doesn't actually do anything. So at the start you'll see empty variables.
 F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
-
+F10::
+    For Key, value in languages
+    msgbox %key% = %value%
+    return
 ; WinActive checks if the active window is in the group defined above.
 #If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
     ;enter math mode. match trigger sequence with Lyx math mode trigger
     ^m::
     {
-      SetDefaultKeyboard(0x0409)
-      ifWinActive ahk_group OfficeGroup
-      { ;msgbox, in office
-        SendInput != ;enter math mode (in office and oneone) . match trigger sequence with Lyx math mode triggering
+      if !(english in %languages%)
+      {
+        msgbox, Can't get into mathmode as english is not installed on this system.
         return
       }
-      else if !WinActive("Lyx")
-      { ;msgbox, global mode NOT lyx.
-        Send ^{enter}
-        Send a ; I know this looks weird, but LtR->RtL works on a text that exists, otherwise it will just delete the empty space.
-        Send {lctrl down}{lshift down}{lctrl up}{lshift up}
-        Send {Backspace}
+      else if (previous_language = "None") ; e.g. we now need to enter mathmode
+      {
+        msgbox, entering mathmode
+        previous_language:=GetKeyboardLanguage()
+        SwapToKeyboardLanguage(english)
+        return
+        ifWinActive ahk_group OfficeGroup
+        { ;msgbox, in office
+            SendInput != ;enter math mode (in office and oneone) . match trigger sequence with Lyx math mode triggering
+            return
+        }
+        else if !WinActive("Lyx")
+        { ;msgbox, global mode NOT lyx.
+            Send ^{enter}
+            SwapToLTR()
+            return
+        }
+        else ;this is for lyx (to avoid interference in case user is in global mode).
+        { ;msgbox, Lyx (In Global mode)
+            SendInput ^m
+        }
         return
       }
-      else ;this is for lyx (to avoid interference in case user is in global mode).
-      { ;msgbox, Lyx (In Global mode)
-        SendInput ^m
+      else
+      {
+        msgbox exiting mathmode
+        SwapToKeyboardLanguage(previous_language)
+        previous_language:="None"
+        return
+        ifWinActive ahk_group OfficeGroup
+        { ;msgbox, in office
+            return
+        }
+        else if !WinActive("Lyx")
+        { ;msgbox, global mode NOT lyx.
+            Send ^{enter}
+            SwapToRTL()
+            return
+        }
+        else ;this is for lyx (to avoid interference in case user is in global mode).
+        { ;msgbox, Lyx (In Global mode)
+            SendInput ^m
+            return
+        }
+        return
       }
     }
 
@@ -402,4 +440,103 @@ SetDefaultKeyboard(LocaleID){
 	Loop %windows% {
 		PostMessage 0x50, 0, %Lan%, , % "ahk_id " windows%A_Index%
 	}
+}
+
+GetAllKeyboards(){
+    ; This routine enumerates all keyboards which are installed on the system
+    ; and returns the ID, the long and abbreviated name of the language
+;    result:={}
+    result:=[]
+;    i = 0
+    loop HKEY_CURRENT_USER, Keyboard Layout\Preload,0,0
+    {
+        RegRead Locale
+        locale := "0x" LTrim(locale, "0")
+;        result[locale] := i
+        result.Push(locale)
+;        i += 1
+    }
+    return, result
+}
+
+GetKeyboardLanguage()
+{
+	if !ThreadId := DllCall("user32.dll\GetWindowThreadProcessId", "Ptr", WinActive("A"), "UInt", 0, "UInt")
+		return false
+
+	if !KBLayout := DllCall("user32.dll\GetKeyboardLayout", "UInt", ThreadId, "UInt")
+		return false
+
+	return Format("{1:#x}", KBLayout & 0xFFFF)
+}
+
+SwapToNextLanguage()
+{
+    Send {lalt down}{lshift down}{lshift up}{lalt up}
+}
+
+ObjIndexOf(obj, item)
+{
+	for i, val in obj {
+		ifequal val, item, return i
+;			return i
+	}
+}
+
+SwapToKeyboardLanguage(LocaleID)
+{
+    curr_lang := GetKeyboardLanguage()
+;    LocaleID_index := ObjIndexOf(languages, LocaleID)
+;    curr_lang_index := ObjIndexOf(languages, curr_lang)
+;    i := 1
+;    s = % languages[%i%]
+;    msgbox %s%
+;    LocaleID_index := languages[%LocaleID%]
+;    curr_lang_index := languages[%curr_lang%]
+
+;    key_swaps := mod(LocaleID_index - curr_lang_index, languages.Length())
+;    msgbox LID is %LocaleID% and curr is %curr_lang%`nLID_loc is %LocaleID_index% curr_loc is %curr_lang_index%`nkeyswaps: %key_swaps%
+;    i := 0
+;    while (i < key_swaps)
+;    {
+;        SwapToNextLanguage()
+;    }
+;    return
+    ; "while not xor(LocaleID, curr_lang)" e.g. while LocaleID != curr_lang
+    ; I've tried more reasonable approaches, but nothing worked.
+    while (LocaleID <> curr_lang)
+    {
+        msgbox entered because LID is %LocaleID% and curr is %curr_lang%
+        sleep 1000
+        SwapToNextLanguage()
+        GetKeyboardLanguage() ; for some reason the computer isn't updated in the first run...
+        curr_lang := GetKeyboardLanguage()
+        sleep 1000
+    }
+}
+
+SwapToLTR()
+{
+    Send a ; I know this looks weird, but RtL->LtR works on a text that exists, otherwise it will just delete the empty space.
+    Send {lctrl down}{lshift down}{lctrl up}{lshift up}
+    Send {Backspace}
+}
+
+SwapToRTL()
+{
+    Send a ; I know this looks weird, but LtR->RtL works on a text that exists, otherwise it will just delete the empty space.
+    Send {rctrl down}{rshift down}{rctrl up}{rshift up}
+    Send {Backspace}
+}
+
+; a replacement for msgbox:
+Splash(text, time)  {
+   ;transparent popup text to alert anything
+   Progress, cw31373b CTFF0000 W300 H150 X100 Y300  ZX ZY  m b fs50 WS700 zh0,%text%,, text popup, arial
+   WinSet, Transparent, 125, text popup
+   sleep %time%
+   SplashOff()
+}
+SplashOff() {
+    Progress, Off
 }
