@@ -36,9 +36,6 @@ enabled := true ; this enables / disables all non-mode shortcuts.
 classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
 global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 
-languages:=GetAllKeyboards()
-english:="0x409"
-
 F6:: enabled := enabled ? false : true
 F7:: global_mode := global_mode ?  : true
 F8:: classic_mode := classic_mode ? false : true

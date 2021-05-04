@@ -1,0 +1,275 @@
+; hotstrings:
+; ?o means the shortcuts will happen in the middle of the word, as long as you type a space afterwards.
+; "c" means the hotstring is case sensitive
+; The space will not appear in the text itself, it is just a distinguisher.
+
+; highschool math
+:?oc:\le::≤
+:?oc:\ll::≪
+:?oc:\ge::≥
+:?oc:\gg::≫
+:?oc:\pm::±
+:?oc:\mp::∓
+:?oc:\sqrt::√
+:?oc:\3root::∛
+:?oc:\4root::∜
+:?oc:\sum::∑
+:?oc:\prod::∏
+:?oc:\coprod::⨿ ; replace with ∐ if you want.
+:?oc:\lfloor::⌊
+:?oc:\rfloor::⌋
+:?oc:\lceil::⌈
+:?oc:\rceil::⌉
+:?oc:\angle::∡
+:?oc:\angle2::∢
+:?oc:\cis::∠
+:?oc:\deg::°
+:?oc:\perp::⊥
+:?oc:\cdot::·
+:?oc:\ndiv::∤
+:?oc:\times::⨯
+:?oc:\infty::∞
+:?oc:\inf::∞
+:?oc:\Re::ℜ
+:?oc:\Im::ℑ
+
+; fractions
+:?oc:\half::½
+:?oc:\12::½
+:?oc:\23::⅔
+:?oc:\14::¼
+:?oc:\16::⅙
+:?oc:\18::⅛
+:?oc:\110::⅒
+
+; shapes
+:?oc:\triangle::∆
+:?oc:\square::□
+:?oc:\blacksquare::∎
+:?oc:\qed::∎
+
+; logic
+:?oc:\land::∧
+:?oc:\wedge::∧
+:?oc:\lor::∨
+:?oc:\vee::∨
+:?oc:\lnot::¬
+:?oc:\neq::≠
+:?oc:\iff::⟺
+:?oc:\LeftRightarrow::⟺
+:?oc:\all::∀
+:?oc:\forall::∀
+:?oc:\exists::∃
+:?oc:\nexists::∄
+:?oc:\to::⟶
+:?oc:\rightarrow::⟶
+:?oc:\To::⟹
+:?oc:\Rightarrow::⟹
+:?oc:\from::⟵
+:?oc:\leftarrow::⟵
+:?oc:\From::⟸
+:?oc:\Leftarrow::⟸
+:?oc:\hookrightarrow::↪
+
+; set theory
+:?oc:\in::∈
+:?oc:\nin::∉
+:?oc:\notin::∉
+:?oc:\ni::∋
+:?oc:\notni::∌
+:?oc:\subset::⊂
+:?oc:\subseteq::⊆
+:?oc:\subsetneq::⊊
+:?oc:\superset::⊃
+:?oc:\supset::⊃
+:?oc:\supseteq::⊇
+:?oc:\superseteq::⊇
+:?oc:\supersetneq::⊋
+:?oc:\supsetneq::⊋
+:?oc:\cup::∪
+:?oc:\bigcup::⋃
+:?oc:\cap::∩
+:?oc:\bigcap::⋂
+:?oc:\emptyset::∅
+
+; cardinality
+:?oc:\aleph::ℵ
+:?oc:\beth::ℶ
+:?oc:\mfc::𝔠
+
+; relations
+:?oc:\prec::≺
+:?oc:\preceq::≼
+:?oc:\precneq::⋨
+:?oc:\succ::≻
+:?oc:\succeq::≽
+:?oc:\succneq::⋩
+:?oc:\approx::≈
+:?oc:\propto::∝
+
+; double stroke capital characters, i.e. mathbb.
+:?oc:\mbn::ℕ
+:?oc:\mbz::ℤ
+:?oc:\mbq::ℚ
+:?oc:\mbr::ℝ
+:?oc:\mbc::ℂ
+:?oc:\mbf::𝔽
+:?oc:\mbk::𝕂
+:?oc:\mbs::𝕊
+:?oc:\mba::𝔸
+:?oc:\mbh::ℍ
+:?oc:\nodd::ℕodd
+:?oc:\neven::ℕeven
+
+; mathfrak
+:?oc:\mfn::𝔑
+:?oc:\mfj::𝔍
+:?oc:\mfr::ℜ
+:?oc:\Re::ℜ
+:?oc:\mfi::ℑ
+:?oc:\Im::ℑ
+:?oc:\mfc::𝔠
+
+; mathcal
+:?oc:\mcp::𝒫
+:?oc:\mco::𝒪
+
+; linear algebra
+:?oc:\langle::⟨
+:?oc:\rangle::⟩
+:?oc:\oplus::⨁ ;⊕
+:?oc:\otimes::⨂ ;⊗
+
+; group theory
+:?oc:\lhd::⊲
+:?oc:\rhd::⊳
+:?oc:\unlhd::⊴
+:?oc:\lhdeq::⊴
+:?oc:\unrhd::⊵
+:?oc:\rhdeq::⊵
+:?oc:\rtimes::⋊
+
+; number theory
+:?oc:\equiv::≡
+
+; calculus
+:?oc:\int::∫
+:?oc:\iint::∬
+:?oc:\iiint::∭
+:?oc:\lint::∮
+:?oc:\liint::∯
+:?oc:\liiint::∰
+:?oc:\partial::∂
+:?oc:\nabla::∇
+:?oc:\Delta::∆
+
+; greek
+:?oc:\alpha::𝛼
+:?oc:\beta::𝛽
+:?oc:\gamma::𝛾
+:?oc:\delta::𝛿
+:?oc:\epsilon::𝜀
+:?oc:\zeta::𝜁
+:?oc:\eta::𝜂
+:?oc:\theta::𝜃
+:?oc:\iota::𝜄
+:?oc:\kappa::𝜅
+:?oc:\lambda::𝜆
+:?oc:\mu::𝜇
+:?oc:\nu::𝜈
+:?oc:\xi::𝜉
+:?oc:\omicron::𝜊
+:?oc:\pi::𝜋
+:?oc:\rho::𝜌
+:?oc:\sigma::𝜎
+:?oc:\tau::𝜏
+:?oc:\upsilon::𝜐
+:?oc:\phi::𝜑
+:?oc:\varphi::𝜙
+:?oc:\chi::𝜒
+:?oc:\psi::𝜓
+:?oc:\omega::𝜔
+
+:?oc:\Alpha::𝛢
+:?oc:\Beta::𝛣
+:?oc:\Gamma::𝛤
+:?oc:\Delta::∆
+:?oc:\Epsilon::𝛦
+:?oc:\Zeta::𝛧
+:?oc:\Eta::𝛨
+:?oc:\Theta::𝛩
+:?oc:\Iota::𝛪
+:?oc:\Kappa::𝛫
+:?oc:\Lambda::𝛬
+:?oc:\Mu::𝛭
+:?oc:\Nu::𝛮
+:?oc:\Xi::𝛯
+:?oc:\Omicron::𝛰
+:?oc:\Pi::𝛱
+:?oc:\Rho::𝛲
+:?oc:\Sigma::𝛴
+:?oc:\Tau::𝛵
+:?oc:\Upsilon::𝛶
+:?oc:\Phi::𝛷
+:?oc:\Varphi::𝛷
+:?oc:\Chi::𝛸
+:?oc:\Psi::𝛹
+:?oc:\Omega::𝛺
+
+; functions and morphisms
+:?oc:\mapsto::↦
+:?oc:\onto::↠
+:?oc:\epimorph::↠
+:?oc:\into::↣ ; some use ↪
+:?oc:\monomorph::↣
+:?oc:\isomorph::⥲
+:?oc:\cong::≅
+:?oc:\circ::⚬
+
+; "?*" means the replacement will happen even in the middle of the word.
+; subscripts.
+:?*c:_0::{U+2080} ; X₀
+:?*c:_1::{U+2081} ; X₁
+:?*c:_2::{U+2082} ; X₂
+:?*c:_3::{U+2083} ; X₃
+:?*c:_4::{U+2084} ; X₄
+:?*c:_5::{U+2085} ; X₅
+:?*c:_6::{U+2086} ; X₆
+:?*c:_7::{U+2087} ; X₇
+:?*c:_8::{U+2088} ; X₈
+:?*c:_9::{U+2089} ; X₉
+:?*c:_+::{U+208A} ; X₊, this requires the shift key as well.
+:?*c:_-::{U+208B} ; X₋
+:?*c:_h::{U+2095} ; Xₕ
+:?*c:_k::{U+2096} ; Xₖ
+:?*c:_m::{U+2098} ; Xₘ
+:?*c:_n::{U+2099} ; Xₙ
+:?*c:_p::{U+209A} ; Xₚ
+:?*c:_s::{U+209B} ; Xₛ
+:?*c:_t::{U+209C} ; Xₜ
+
+; superscripts.
+:?*c:^-1::{U+207B}{U+00B9} ; X⁻¹
+:?*c:^0::{U+2070} ; X⁰
+:?*c:^1::{U+00B9} ; X¹
+:?*c:^2::{U+00B2} ; X²
+:?*c:^3::{U+00B3} ; X³
+:?*c:^4::{U+2074} ; X⁴
+:?*c:^5::{U+2075} ; X⁵
+:?*c:^6::{U+2076} ; X⁶
+:?*c:^7::{U+2077} ; X⁷
+:?*c:^8::{U+2078} ; X⁸
+:?*c:^9::{U+2079} ; X⁹
+:?*c:^+::{U+207A} ; X⁺, this requires the shift key as well.
+:?oc:^-::{U+207B} ; X⁻ ; this used ?o mode to allow X⁻¹.
+:?*c:^n::{U+207F} ; Xⁿ
+:?*c:^i::{U+2071} ; Xⁱ
+:?*c:^*::{U+20F0} ; X⃰, this requires the shift key as well.
+
+; ?o means the shortcuts will happen in the middle of the word, as long as you type a space afterwards.
+; The space will not appear in the text itself, it is just a distinguisher.
+; Other combining characters.
+:?oc:\overline::{U+0305} ; X̅
+:?oc:\not::{U+20E5} ; ⃥=, may not work in many applications.
+:?oc:\hat::{U+0302} ; X̂
+:?oc:\dot::{U+0307} ; Ẋ

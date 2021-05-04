@@ -1,0 +1,53 @@
+:c:\-::−
+:?oc:\ss::⊆
+:c:\nss::⊈
+:c:\nl::≮
+:c:\u::∪
+:c:\a::∀
+:c:\e::∃
+:c:\nex::∄
+:c:\so::|
+:c:\es::∅
+:c:\ep::ε
+:c:\om::Ω
+:c:\n::ℕ
+:c:\rr::ℝ
+:c:\r::𝓡
+:c:\q::ℚ
+:c:\z::ℤ
+:c:\s::𝕊
+:c:\ah::ℵ₀
+:c:\p::𝒫
+:c:\eq::≡
+:c:\sig::∑
+:?oc:\tr::∆
+:c:\an::∡
+:c:\ang2::∡
+:?oc:\ang::∢
+:?oc:\t::⨯
+:c:\black::∎
+:?oc:\bl::∎
+:?oc:\f::𝑓
+:c:\gf::𝑔
+:c:\x::𝑥
+:?oc:\ש::
+  {
+    SetDefaultKeyboard(0x0409)
+    Send ^{enter}a
+    Send {lctrl down}{lshift down}{lctrl up}{lshift up}
+    return
+  }
+
+SetDefaultKeyboard(LocaleID){
+	Global
+	SPI_SETDEFAULTINPUTLANG := 0x005A
+	SPIF_SENDWININICHANGE := 2
+	Lan := DllCall("LoadKeyboardLayout", "Str", Format("{:08x}", LocaleID), "Int", 0)
+	VarSetCapacity(Lan%LocaleID%, 4, 0)
+	NumPut(LocaleID, Lan%LocaleID%)
+	DllCall("SystemParametersInfo", "UInt", SPI_SETDEFAULTINPUTLANG, "UInt", 0, "UPtr", &Lan%LocaleID%, "UInt", SPIF_SENDWININICHANGE)
+	WinGet, windows, List
+	Loop %windows% {
+		PostMessage 0x50, 0, %Lan%, , % "ahk_id " windows%A_Index%
+	}
+}
