@@ -16,19 +16,27 @@ SetTitleMatchMode, 2
 GroupAdd, LatexTextConversionGroup, ahk_exe chrome.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe firefox.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe opera.exe
-GroupAdd, LatexTextConversionGroup, ahk_exe msedge.exe
+; currently full openning to a browser may interfer with Google Docs, Wolfram etc...
+; you may want to disable your browser (msedge temporaryly disabled).
+;GroupAdd, LatexTextConversionGroup, ahk_exe msedge.exe
 ; interpreters
-GroupAdd, LatexTextConversionGroup, ahk_exe pycharm64.exe
+;currently messes up coding on pycharm especialy _stuff in function names.
+;GroupAdd, LatexTextConversionGroup, ahk_exe pycharm64.exe
 ; communication apps
 GroupAdd, LatexTextConversionGroup, ahk_exe whatsapp.exe
+GroupAdd, LatexTextConversionGroup, WhatsApp
 GroupAdd, LatexTextConversionGroup, ahk_exe discord.exe
 ; text editors
 GroupAdd, LatexTextConversionGroup, ahk_exe winword.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe POWERPNT.EXE
+GroupAdd, LatexTextConversionGroup, ahk_exe OUTLOOK.EXE
+GroupAdd, LatexTextConversionGroup, ahk_exe EXCEL.EXE
 GroupAdd, LatexTextConversionGroup, OneNote
 ; microsoft office
 GroupAdd, OfficeGroup, ahk_exe ahk_exe WINWORD.EXE
 GroupAdd, OfficeGroup, ahk_exe POWERPNT.EXE
+GroupAdd, OfficeGroup, ahk_exe OUTLOOK.EXE
+GroupAdd, OfficeGroup, ahk_exe EXCEL.EXE
 GroupAdd, OfficeGroup, OneNote
 
 ; different script modes are defined here
@@ -74,6 +82,7 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
     ; The space will not appear in the text itself, it is just a distinguisher.
 
     ; highschool math
+    :?o:\ne::≠
     :?o:\le::≤
     :?o:\ll::≪
     :?o:\ge::≥
@@ -106,6 +115,7 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
     ; fractions
     :?o:\half::½
     :?o:\12::½
+    :?o:\13::⅓
     :?o:\23::⅔
     :?o:\14::¼
     :?o:\16::⅙
@@ -134,10 +144,13 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
     :?o:\to::⟶
     :?o:\rightarrow::⟶
     :?o:\To::⟹
+    :?o:\implies::⟹
     :?o:\Rightarrow::⟹
     :?o:\from::⟵
+    :?o:\gets::⟵
     :?o:\leftarrow::⟵
     :?o:\From::⟸
+    :?o:\impliedby::⟸
     :?o:\Leftarrow::⟸
     :?o:\hookrightarrow::↪
 
