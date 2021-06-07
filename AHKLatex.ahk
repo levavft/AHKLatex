@@ -46,11 +46,32 @@ global_mode := false ; this mode lets you use AHKLatex everywhere, not just insi
 
 F6:: enabled := enabled ? false : true
 F7:: global_mode := global_mode ?  : true
-F8:: classic_mode := classic_mode ? false : true
+F8::
+{
+ classic_mode := classic_mode ? false : true
+ text = enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
+ splash(text)
+ return
+}
 
 ; The following is useful in case you don't know the current state.
 ; Due to a quirk in AHK, initializing to false doesn't actually do anything. So at the start you'll see empty variables.
-F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
+; F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
+F9::
+{
+ text = enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
+ splash(text)
+ return
+}
+splash(textt)
+{
+   ;transparent popup text
+   Progress, cw31373b CTFF0000 W300 H100 X100 Y300  ZX ZY  m b fs20 WS700 zh0,%textt%,, text popup, arial
+   WinSet, Transparent, 125, text popup
+   Sleep 2000
+   Progress, Off
+   return
+}
 
 ; WinActive checks if the active window is in the group defined above.
 #If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
