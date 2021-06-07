@@ -344,9 +344,14 @@ F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_m
     :?*:^8::{U+2078} ; X⁸
     :?*:^9::{U+2079} ; X⁹
     :?*:^+::{U+207A} ; X⁺, this requires the shift key as well.
-    :?o:^-::{U+207B} ; X⁻ ; this used ?o mode to allow X⁻¹.
+    :?o:^-::{U+207B} ; X⁻ ; this used ?o mode to allow X⁻¹ (as a direct sequence).
     :?*:^n::{U+207F} ; Xⁿ
+    :?*:^m::{U+1D50} ; Xᵐ
+    :?*:^a::{U+1D43} ; Xᵃ
+    :?*:^x::{U+1D61} ; Xᵡ
     :?*:^i::{U+2071} ; Xⁱ
+    :?*:^(::{U+207D} ; X⁽
+    :?*:^)::{U+207E} ; X⁾
     :?*:^*::{U+20F0} ; X⃰, this requires the shift key as well.
 
     ; ?o means the shortcuts will happen in the middle of the word, as long as you type a space afterwards.
