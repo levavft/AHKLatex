@@ -41,11 +41,17 @@ GroupAdd, OfficeGroup, OneNote
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
-classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
+,classic_mode := true ; this mode lets you use the original shortcuts as well. They take priority if they clash.
 global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 
 F6:: enabled := enabled ? false : true
-F7:: global_mode := global_mode ?  : true
+F7::
+{
+ global_mode := global_mode ? false : true
+ text = enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
+ splash(text)
+ return
+}
 F8::
 {
  classic_mode := classic_mode ? false : true
@@ -55,7 +61,6 @@ F8::
 }
 
 ; The following is useful in case you don't know the current state.
-; Due to a quirk in AHK, initializing to false doesn't actually do anything. So at the start you'll see empty variables.
 ; F9:: msgbox, enabled (F6): %enabled%`nglobal_mode (F7): %global_mode%`nclassic_mode (F8): %classic_mode%
 F9::
 {
@@ -63,21 +68,14 @@ F9::
  splash(text)
  return
 }
-splash(textt)
-{
-   ;transparent popup text
-   Progress, cw31373b CTFF0000 W300 H100 X100 Y300  ZX ZY  m b fs20 WS700 zh0,%textt%,, text popup, arial
-   WinSet, Transparent, 125, text popup
-   Sleep 2000
-   Progress, Off
-   return
-}
+
 
 ; WinActive checks if the active window is in the group defined above.
 #If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
     ;enter math mode. match trigger sequence with Lyx math mode trigger
     ^m::
     {
+
       SetDefaultKeyboard(0x0409)
       ifWinActive ahk_group OfficeGroup
       { ;msgbox, in office
@@ -95,6 +93,8 @@ splash(textt)
       else ;this is for lyx (to avoid interference in case user is in global mode).
       { ;msgbox, Lyx (In Global mode)
         SendInput ^m
+        ;splash ("m math mode")
+        return
       }
     }
 
@@ -344,6 +344,8 @@ splash(textt)
     :?*:_9::{U+2089} ; X₉
     :?*:_+::{U+208A} ; X₊, this requires the shift key as well.
     :?*:_-::{U+208B} ; X₋
+    :?*:_a::{U+2090} ; Xₐ
+    :?*:_x::{U+2093} ; Xₓ
     :?*:_h::{U+2095} ; Xₕ
     :?*:_k::{U+2096} ; Xₖ
     :?*:_m::{U+2098} ; Xₘ
@@ -351,6 +353,7 @@ splash(textt)
     :?*:_p::{U+209A} ; Xₚ
     :?*:_s::{U+209B} ; Xₛ
     :?*:_t::{U+209C} ; Xₜ
+
 
     ; superscripts.
     :?*:^-1::{U+207B}{U+00B9} ; X⁻¹
@@ -417,15 +420,24 @@ splash(textt)
     :?o:\f::𝑓
     ::\gf::𝑔
     ::\x::𝑥
-    :?o:\ש::
+    ::\ש::
       {
         SetDefaultKeyboard(0x0409)
         Send ^{enter}a
         Send {lctrl down}{lshift down}{lctrl up}{lshift up}
+        Send {Backspace}
+        splash("math mode")
+        return
+      }
+      ::\g::
+      {
+        Send {lalt down}{lshift down}{lalt up}{lshift up} ; switching back to hebrew "old school".
         return
       }
 #If
 
+; avoid calling this function with hewbrew code 040D. it may add a second annoying hebrew keyboard
+; to your system (till next reboot you'll be toggling 3 languages instead of 2).
 SetDefaultKeyboard(LocaleID){
 	Global
 	SPI_SETDEFAULTINPUTLANG := 0x005A
@@ -438,4 +450,13 @@ SetDefaultKeyboard(LocaleID){
 	Loop %windows% {
 		PostMessage 0x50, 0, %Lan%, , % "ahk_id " windows%A_Index%
 	}
+}
+
+splash(textt){
+   ;transparent popup text
+   Progress, cw31373b CTFF0000 W300 H100 X100 Y300  ZX ZY  m b fs20 WS700 zh0,%textt%,, text popup, arial
+   WinSet, Transparent, 125, text popup
+   Sleep 2000
+   Progress, Off
+   return
 }
