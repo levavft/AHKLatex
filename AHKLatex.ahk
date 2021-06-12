@@ -353,6 +353,9 @@ F9::
     :?*:_p::{U+209A} ; Xₚ
     :?*:_s::{U+209B} ; Xₛ
     :?*:_t::{U+209C} ; Xₜ
+    :?*:_i::{U+1D62} ; Xᵢ
+    :?*:_j::{U+2C7C} ; Xⱼ
+    :?*:_\beta::{U+1D66} ; Xᵦ
 
 
     ; superscripts.
@@ -372,11 +375,13 @@ F9::
     :?*:^n::{U+207F} ; Xⁿ
     :?*:^m::{U+1D50} ; Xᵐ
     :?*:^a::{U+1D43} ; Xᵃ
-    :?*:^x::{U+1D61} ; Xᵡ
+    ; :?*:^x::{U+1D61} ; Xᵡ
+    :?*:^x::{U+02E3} ; Xˣ
     :?*:^i::{U+2071} ; Xⁱ
     :?*:^(::{U+207D} ; X⁽
     :?*:^)::{U+207E} ; X⁾
     :?*:^*::{U+20F0} ; X⃰, this requires the shift key as well.
+
 
     ; ?o means the shortcuts will happen in the middle of the word, as long as you type a space afterwards.
     ; The space will not appear in the text itself, it is just a distinguisher.
@@ -420,6 +425,17 @@ F9::
     :?o:\f::𝑓
     ::\gf::𝑔
     ::\x::𝑥
+
+    ;currencies
+    :?*:\eur::{U+20AC} ; €
+    :?*:\ils::{U+20AA} ; ₪
+    :?*:\nis::{U+20AA} ; ₪
+
+    ;symbols
+    :?*:\play::{U+23F5} ; ⏵
+    :?*:\ff::{U+23E9} ; ⏩
+    :?*:\bb::{U+23EA} ; ⏪
+
     ::\ש::
       {
         SetDefaultKeyboard(0x0409)
