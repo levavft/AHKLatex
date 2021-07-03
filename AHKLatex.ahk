@@ -294,6 +294,9 @@ F9::
     :?o:\psi::𝜓
     :?o:\omega::𝜔
 
+    ;not greek but still...
+    :?o:\ell::ℓ
+
     :?o:\Alpha::𝛢
     :?o:\Beta::𝛣
     :?o:\Gamma::𝛤
@@ -319,6 +322,7 @@ F9::
     :?o:\Chi::𝛸
     :?o:\Psi::𝛹
     :?o:\Omega::𝛺
+
 
     ; functions and morphisms
     :?o:\mapsto::↦
@@ -391,6 +395,7 @@ F9::
     ; The space will not appear in the text itself, it is just a distinguisher.
     ; Other combining characters.
     :?o:\overline::{U+0305} ; X̅
+    :?o:\underline::{U+0332} ; X_
     :?o:\not::{U+20E5} ; ⃥=, may not work in many applications.
     :?o:\hat::{U+0302} ; X̂
     :?o:\dot::{U+0307} ; Ẋ
@@ -431,6 +436,9 @@ F9::
     ::\gf::𝑔
     ::\x::𝑥
     :?*:\אז::⟵
+    :?o:\d::·
+    :?*:\ul::{U+0332} ;underline combining
+    :?*:\ol::{U+0305} ; X̅
 
     ;currencies
     :?*:\eur::{U+20AC} ; €
