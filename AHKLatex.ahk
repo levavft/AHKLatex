@@ -41,7 +41,7 @@ GroupAdd, OfficeGroup, OneNote
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
-,classic_mode := true ; this mode lets you use the original shortcuts as well. They take priority if they clash.
+classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
 global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 
 F6:: enabled := enabled ? false : true
@@ -69,6 +69,15 @@ F9::
  return
 }
 
+~lbutton::
+{
+ if(WinActive("- LyX"))
+ { ; force english. ~ maintains the regular mouse functionality .   ;triggers when you click the mouse inside LyX.
+  SetDefaultKeyboard(0x0409)
+  SetCapsLockState, Off
+ }
+ return
+}
 
 ; WinActive checks if the active window is in the group defined above.
 #If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
