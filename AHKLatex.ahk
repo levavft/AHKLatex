@@ -69,15 +69,25 @@ F9::
  return
 }
 
+#IfWinActive,  - LyX    ; next hotkey(s) only trigger when LyX is active
+
 ~lbutton::
 {
- if(WinActive("- LyX"))
- { ; force english. ~ maintains the regular mouse functionality .   ;triggers when you click the mouse inside LyX.
-  SetDefaultKeyboard(0x0409)
-  SetCapsLockState, Off
- }
+ ; force english. ~ maintains the regular mouse functionality .   ;triggers when you click the mouse inside LyX.
+ SetDefaultKeyboard(0x0409)
+ SetCapsLockState, Off
  return
 }
+LShift & Alt::  englishAndF12() ; to complement the bellow for opposite sequence
+!LShift::  englishAndF12() ; this will only trigger on Alt Shift (not on shift alt)
+
+englishAndF12()
+{
+  SetDefaultKeyboard(0x0409) ; always revert to english on Alt Shift
+  SendInput {F12} ;trigger LyX language change naturally.
+}
+
+#IfWinActive
 
 ; WinActive checks if the active window is in the group defined above.
 #If enabled and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
