@@ -94,7 +94,7 @@ englishAndF12()
     ;enter math mode. match trigger sequence with Lyx math mode trigger
     ^m::
     {
-
+      msgbox, pressed
       SetDefaultKeyboard(0x0409)
       ifWinActive ahk_group OfficeGroup
       { ;msgbox, in office
@@ -423,6 +423,9 @@ englishAndF12()
     :?o:\dot::{U+0307} ; Ẋ
 #If
 
+#If enabled and classic_mode
+    LAlt & =:: ;alt = to ^m
+    ^n::SendInput ^m ;map ^n to ^m
 #If enabled and classic_mode and (WinActive("ahk_group LatexTextConversionGroup") or global_mode)
     :?o:\-::−
     :?*:\ss::⊆
@@ -455,6 +458,7 @@ englishAndF12()
     :?o:\t::⨯
     :?*:\black::∎
     :?*:\bl::∎
+    :?*:\l::λ
     :?o:\f::𝑓
     :?*:\gf::𝑔
     :?o:\x::𝑥
