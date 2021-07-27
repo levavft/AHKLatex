@@ -94,7 +94,6 @@ englishAndF12()
     ;enter math mode. match trigger sequence with Lyx math mode trigger
     ^m::
     {
-      msgbox, pressed
       SetDefaultKeyboard(0x0409)
       ifWinActive ahk_group OfficeGroup
       { ;msgbox, in office
