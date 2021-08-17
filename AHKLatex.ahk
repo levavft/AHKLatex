@@ -78,11 +78,11 @@ F9::
  SetCapsLockState, Off
  return
 }
-LShift & Alt::  englishAndF12() ; to complement the bellow for opposite sequence
-!LShift::  englishAndF12() ; this will only trigger on Alt Shift (not on shift alt)
+LShift & Alt::  SetDefaultKeyboard(0x0409) ; to complement the bellow for opposite sequence
+!LShift::  SetDefaultKeyboard(0x0409) ; this will only trigger on Alt Shift (not on shift alt)
 
 englishAndF12()
-{
+{ ; not used since it triggers F12 at unintended scenarios.
   SetDefaultKeyboard(0x0409) ; always revert to english on Alt Shift
   SendInput {F12} ;trigger LyX language change naturally.
 }
@@ -457,7 +457,7 @@ englishAndF12()
     :?o:\t::⨯
     :?*:\black::∎
     :?*:\bl::∎
-    :?*:\l::λ
+    :?o:\l::λ
     :?o:\f::𝑓
     :?*:\gf::𝑔
     :?o:\x::𝑥
