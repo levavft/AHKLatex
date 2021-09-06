@@ -1,4 +1,6 @@
-﻿; It is recommended to edit this file with Pycharm/AHK's native editor. Other editors might not support some of the unicode here.
+﻿; הערה - יתכן שהמקרו מתנהג באופן שונה (למשל בonenote) כאשר הוא מותחל על מקלדת עברית
+; כלומר קיימת חשיבות למצב השפה ברגע ההרצה
+; It is recommended to edit this file with Pycharm/AHK's native editor. Other editors might not support some of the unicode here.
 ; To be able to run this file, you need to install autohotkey v1.1
 ; https://autohotkey.com/download/
 
@@ -457,11 +459,14 @@ englishAndF12()
     :?o:\t::⨯
     :?*:\black::∎
     :?*:\bl::∎
+    :?*:\משל::∎
     :?o:\l::λ
     :?o:\f::𝑓
     :?*:\gf::𝑔
     :?o:\x::𝑥
-    :?*:\אז::⟵
+    :?*:\אז::⟵{space}
+    :?*:\אממ::⟷{space} ; ⟺ change if you prefer double lined arrow.
+    :?*:\ןככ::⟷{space}
     :?o:\d::·
     :?*:\ul::{U+0332} ;underline combining
     :?*:\ol::{U+0305} ; X̅
