@@ -17,6 +17,7 @@ SetTitleMatchMode, 2
 ; web browsers
 GroupAdd, LatexTextConversionGroup, ahk_exe chrome.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe firefox.exe
+GroupAdd, LatexTextConversionGroup, ahk_exe msedge.exe
 GroupAdd, LatexTextConversionGroup, ahk_exe opera.exe
 ; currently full openning to a browser may interfer with Google Docs, Wolfram etc...
 ; you may want to disable your browser (msedge temporaryly disabled).
@@ -43,7 +44,7 @@ GroupAdd, OfficeGroup, OneNote
 
 ; different script modes are defined here
 enabled := true ; this enables / disables all non-mode shortcuts.
-classic_mode := false ; this mode lets you use the original shortcuts as well. They take priority if they clash.
+classic_mode := true ; this mode lets you use the original shortcuts as well. They take priority if they clash.
 global_mode := false ; this mode lets you use AHKLatex everywhere, not just inside the above apps.
 
 F6:: enabled := enabled ? false : true
@@ -131,6 +132,7 @@ englishAndF12()
     :?o:\pm::±
     :?o:\mp::∓
     :?o:\sqrt::√
+    :?o:\cube::{U+221B} ; ∛
     :?o:\3root::∛
     :?o:\4root::∜
     :?o:\sum::∑
@@ -369,6 +371,7 @@ englishAndF12()
     :?*:_+::{U+208A} ; X₊, this requires the shift key as well.
     :?*:_-::{U+208B} ; X₋
     :?*:_a::{U+2090} ; Xₐ
+    :?*:_b::{U+0062} ; Xₐ
     :?*:_x::{U+2093} ; Xₓ
     :?*:_y::{U+1D67} ; Xᵧ
     :?*:_h::{U+2095} ; Xₕ
@@ -387,6 +390,7 @@ englishAndF12()
 
     ; superscripts.
     :?*:^-1::{U+207B}{U+00B9} ; X⁻¹
+    :?*:^.::{U+02D9} ; X˙
     :?*:^0::{U+2070} ; X⁰
     :?*:^1::{U+00B9} ; X¹
     :?*:^2::{U+00B2} ; X²
@@ -462,19 +466,27 @@ englishAndF12()
     :?*:\משל::∎
     :?o:\l::λ
     :?o:\f::𝑓
+    :?o:\כ::𝑓
     :?*:\gf::𝑔
     :?o:\x::𝑥
+    :?o:\0x::1>𝑥>0
+    :?o:\םס::1>𝑥>0
+    :?o:\ס::𝑥
     :?*:\אז::⟵{space}
     :?*:\אממ::⟷{space} ; ⟺ change if you prefer double lined arrow.
     :?*:\ןככ::⟷{space}
     :?o:\d::·
     :?*:\ul::{U+0332} ;underline combining
     :?*:\ol::{U+0305} ; X̅
-
+    :?o:\sm::😀
     ;currencies
     :?*:\eur::{U+20AC} ; €
     :?*:\ils::{U+20AA} ; ₪
     :?*:\nis::{U+20AA} ; ₪
+
+    :?*:\ub::{U+23DF} ;  ⏟ 
+    :?*:\ob::{U+23DE} ;  ⏞
+
 
     ;symbols
     :?*:\play::{U+23F5} ; ⏵
@@ -495,6 +507,7 @@ englishAndF12()
         Send {lalt down}{lshift down}{lalt up}{lshift up} ; switching back to hebrew "old school".
         return
       }
+    ^SPACE::  Winset, Alwaysontop, , A
 #If
 
 ; avoid calling this function with hewbrew code 040D. it may add a second annoying hebrew keyboard
